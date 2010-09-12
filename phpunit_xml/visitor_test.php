@@ -35,12 +35,15 @@ class qaVisitorTest extends qaXmlTestCase
         return $person;
     }
 
-    public function testVisitPersonNative()
+    public function testVisitPersonNaive()
     {
         $person = $this->getPersonFixture();
 
         $expDom = new DOMDocument( '1.0', 'utf-8' );
-        $expPersonElem = $expDom->appendChild(
+        $expRoot = $expDom->appendChild(
+            $expDom->createElement( 'root' )
+        );
+        $expPersonElem = $expRoot->appendChild(
             $expDom->createElement( 'Person' )
         );
         $expPersonElem->appendChild(
