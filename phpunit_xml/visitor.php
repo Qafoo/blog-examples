@@ -1,6 +1,8 @@
 <?php
 
-class qaXmlVisitor
+require_once dirname( __FILE__ ) . '/person.php';
+
+class qaPersonVisitor
 {
     protected $document;
 
