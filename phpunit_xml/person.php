@@ -33,7 +33,7 @@ class qaPerson
     {
         if ( false === is_string( $lastName ) )
         {
-            throw new InvalidArgumentException(
+            throw new qaInvalidArgumentException(
                 'lastName',
                 $lastName,
                 'string'
