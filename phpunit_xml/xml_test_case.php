@@ -1,5 +1,8 @@
 <?php
 
+// PHPUnit master complains here
+// require_once 'PHPUnit/Framework.php';
+
 abstract class qaXmlTestCase extends PHPUnit_Framework_TestCase
 {
     protected abstract function getDomDocument();
