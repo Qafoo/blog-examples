@@ -54,8 +54,8 @@ class qaVisitorTest extends qaXmlTestCase
         );
         $expPersonElem->appendChild(
             $expDom->createElement(
-                'LastName',
-                $person->getLastName()
+                'FirstName',
+                $person->getFirstName()
             )
         );
         $expPersonElem->appendChild(
