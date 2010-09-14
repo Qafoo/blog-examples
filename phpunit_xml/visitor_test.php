@@ -1,6 +1,9 @@
 <?php
 
-class qaVisitorTest extends qaXmlTestCase
+require_once dirname( __FILE__ ) . '/visitor.php';
+require_once dirname( __FILE__ ) . '/xml_test_case.php';
+
+class qaPersonVisitorTest extends qaXmlTestCase
 {
     protected $domDocument;
 
