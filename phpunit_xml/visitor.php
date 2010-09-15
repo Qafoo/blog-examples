@@ -36,19 +36,19 @@ class qaPersonVisitor
             )
         );
 
-        if ( null !== ( $iGender = $person->getGender() ) )
+        if ( null !== ( $gender = $person->getGender() ) )
         {
             $this->currentElement->appendChild(
                 $this->document->createElement(
-                    'Gender', $iGender
+                    'Gender', $gender
                 )
             );
         }
-        if ( null !== ( $oDateOfBirth = $person->getDateOfBirth() ) )
+        if ( null !== ( $dateOfBirth = $person->getDateOfBirth() ) )
         {
             $this->currentElement->appendChild(
                 $this->document->createElement(
-                    'DateOfBirth', $oDateOfBirth->format( 'Y-m-d' )
+                    'DateOfBirth', $dateOfBirth->format( 'Y-m-d' )
                 )
             );
         }
