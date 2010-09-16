@@ -88,6 +88,19 @@ class qaPersonVisitorTest extends qaXmlTestCase
         );
     }
 
+    public function testVisitPersonCompareFile()
+    {
+        $person = $this->getPersonFixture();
+
+        $visitor = new qaPersonVisitor( $this->getDomRootElement() );
+        $visitor->visitPerson( $person );
+        
+        $this->assertXmlStringEqualsXmlFile(
+            'data/' . __CLASS__ . '__' . __FUNCTION__ . '.xml',
+            $this->getDomDocument()->saveXml()
+        );
+    }
+
     public function testVisitPersonSelectCSS()
     {
         $person = $this->getPersonFixture();
