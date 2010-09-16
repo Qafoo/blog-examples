@@ -209,6 +209,64 @@ class qaPersonVisitorTest extends qaXmlTestCase
             false
         );
     }
+
+    public function testVisitPersonXpathExtensive()
+    {
+        $person = $this->getPersonFixture();
+
+        $visitor = new qaPersonVisitor( $this->getDomRootElement() );
+        $visitor->visitPerson( $person );
+
+        $this->assertXpathMatch(
+            1,
+            'count(/root/Person)',
+            'Incorrect number of Person elements.'
+        );
+
+        $this->assertXpathMatch(
+            $person->getLastName(),
+            'string(/root/Person/LastName)',
+            'Incorrect or missing LastName element.'
+        );
+        $this->assertXpathMatch(
+            $person->getFirstName(),
+            'string(/root/Person/FirstName)',
+            'Incorrect or missing FirstName element.'
+        );
+        $this->assertXpathMatch(
+            $person->getGender(),
+            'string(/root/Person/Gender)',
+            'Incorrect or missing Gender element.'
+        );
+        $this->assertXpathMatch(
+            $person->getDateOfBirth()->format( 'Y-m-d' ),
+            'string(/root/Person/DateOfBirth)',
+            'Incorrect or missing DateOfBirth element.'
+        );
+    }
+
+    public function testVisitPersonXpathShort()
+    {
+        $person = $this->getPersonFixture();
+
+        $visitor = new qaPersonVisitor( $this->getDomRootElement() );
+        $visitor->visitPerson( $person );
+
+        $this->assertXpathMatch(
+            1,
+            sprintf( 'count(/root/Person['
+                . 'LastName = "%s" and '
+                . 'FirstName = "%s" and '
+                . 'Gender = "%s" and '
+                . 'DateOfBirth = "%s"])',
+                $person->getLastName(),
+                $person->getFirstName(),
+                $person->getGender(),
+                $person->getDateOfBirth()->format( 'Y-m-d' )
+            ),
+            'Mismatching XPath.'
+        );
+    }
 }
 
 ?>
