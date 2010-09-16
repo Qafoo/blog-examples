@@ -24,6 +24,11 @@ class qaPersonVisitorTest extends qaXmlTestCase
         return $this->domDocument;
     }
 
+    protected function getDomRootElement()
+    {
+        return $this->rootElement;
+    }
+
     protected function getPersonFixture()
     {
         $person = new qaPerson(
@@ -74,7 +79,7 @@ class qaPersonVisitorTest extends qaXmlTestCase
             )
         );
 
-        $visitor = new qaPersonVisitor( $this->rootElement );
+        $visitor = new qaPersonVisitor( $this->getDomRootElement() );
         $visitor->visitPerson( $person );
 
         $this->assertEquals(
@@ -87,7 +92,7 @@ class qaPersonVisitorTest extends qaXmlTestCase
     {
         $person = $this->getPersonFixture();
 
-        $visitor = new qaPersonVisitor( $this->rootElement );
+        $visitor = new qaPersonVisitor( $this->getDomRootElement() );
         $visitor->visitPerson( $person );
 
         $this->assertSelectCount(
@@ -137,7 +142,7 @@ class qaPersonVisitorTest extends qaXmlTestCase
     {
         $person = $this->getPersonFixture();
 
-        $visitor = new qaPersonVisitor( $this->rootElement );
+        $visitor = new qaPersonVisitor( $this->getDomRootElement() );
         $visitor->visitPerson( $person );
         
         $this->assertTag(
@@ -192,7 +197,6 @@ class qaPersonVisitorTest extends qaXmlTestCase
             false
         );
     }
-
 }
 
 ?>
