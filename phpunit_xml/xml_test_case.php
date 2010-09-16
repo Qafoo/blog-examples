@@ -9,17 +9,14 @@ abstract class qaXmlTestCase extends PHPUnit_Framework_TestCase
 
     protected function assertXpathMatch( $expected, $xpath, $message = null, DOMNode $context = null )
     {
-        $xpathObj = new DOMXPath( $this->getDomDocument() );
+        $dom = $this->getDomDocument();
+        $xpathObj = new DOMXPath( $dom );
 
-        $res = null;
-        if ( null === $context )
-        {
-            $res = $xpathObj->evaluate( $xpath );
-        }
-        else
-        {
-            $res = $xpathObj->evaluate( $xpath, $context );
-        }
+        $context = $context === null
+            ? $dom->documentElement
+            : $context;
+
+        $res = $xpathObj->evaluate( $xpath, $context );
 
         $this->assertEquals(
             $expected,
