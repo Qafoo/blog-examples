@@ -116,7 +116,7 @@ class qaPersonVisitorTest extends qaXmlTestCase
             false
         );
 
-        // Broken CSS parser
+        // Incomplete CSS parser
         $this->assertSelectEquals(
             'FirstName',
             $person->getFirstName(),
