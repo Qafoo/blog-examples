@@ -116,9 +116,8 @@ class qaPersonVisitorTest extends qaXmlTestCase
             false
         );
 
-        // Incomplete CSS parser
         $this->assertSelectEquals(
-            'FirstName',
+            'Person > FirstName',
             $person->getFirstName(),
             1,
             $this->getDomDocument(),
@@ -126,7 +125,7 @@ class qaPersonVisitorTest extends qaXmlTestCase
             false
         );
         $this->assertSelectEquals(
-            'LastName',
+            'Person > LastName',
             $person->getLastName(),
             1,
             $this->getDomDocument(),
@@ -134,7 +133,7 @@ class qaPersonVisitorTest extends qaXmlTestCase
             false
         );
         $this->assertSelectEquals(
-            'Gender',
+            'Person > Gender',
             $person->getGender(),
             1,
             $this->getDomDocument(),
@@ -142,7 +141,7 @@ class qaPersonVisitorTest extends qaXmlTestCase
             false
         );
         $this->assertSelectEquals(
-            'DateOfBirth',
+            'Person > DateOfBirth',
             $person->getDateOfBirth()->format( 'Y-m-d' ),
             1,
             $this->getDomDocument(),
